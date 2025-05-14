@@ -16,7 +16,7 @@ const AddStudent = ({ FormData, handleChangeFiled, handleAdd, btnText }) => {
 						value={FormData.username}
 						onChange={handleChangeFiled}
 					/>
-				</div>		
+				</div>
 
 				<div className="col-auto">
 					<label className="visually-hidden" htmlFor="autoSizingInput">

@@ -3,35 +3,34 @@ import "./App.css";
 import AddStudent from "./components/AddStudent";
 import SearchItem from "./components/SearchItem";
 import StudentList from "./components/StudentList";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Loader from "./components/Loader";
 import Pagination from "./components/Pagination";
 import Dropdown from "./components/Dropdown";
+import { MyContext } from "./components/MyProvider";
 
 function App() {
-	const [list, setList] = useState([]);
-	const [btnText, setBtnText] = useState("ADD");
-	const [editID, setEditID] = useState(null);
-
-	const [isLoading, setLoader] = useState(true);
-
-	const [search, SetsearchText] = useState("");
-
-	const [currentPage, setCurrentPage] = useState(1);
-
 	const [selectedValue, setselectedValue] = useState(5);
-
 	const itemPerPage = selectedValue;
-
+	const [currentPage, setCurrentPage] = useState(1);
 	const lastIndex = itemPerPage * currentPage;
 
 	const firstIdex = lastIndex - itemPerPage;
 
-	const [FormData, setFormData] = useState({
-		username: "",
-		email: "",
-		phone: "",
-	});
+	const {
+		list,
+		setList,
+		FormData,
+		setFormData,
+		btnText,
+		setBtnText,
+		editID,
+		setEditID,
+		isLoading,
+		setLoader,
+		search,
+		SetsearchText,
+	} = useContext(MyContext);
 
 	useEffect(() => {
 		fetch("https://dummyjson.com/users")
